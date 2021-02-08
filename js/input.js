@@ -4,6 +4,7 @@ let lastInputDirection = { x: 0, y: 0}
 window.addEventListener('keydown', e => {
     switch ( e.key ) {
         case 'ArrowUp':
+            window.addEventListener('scroll', noscroll)
             if ( lastInputDirection.y !== 0 ) break
 
             inputDirection = { x: 0, y: -1}
@@ -16,6 +17,7 @@ window.addEventListener('keydown', e => {
             break
 
         case 'ArrowDown':
+            window.addEventListener('scroll', noscroll)
             if ( lastInputDirection.y !== 0 ) break
 
             inputDirection = { x: 0, y: 1}
@@ -32,4 +34,8 @@ window.addEventListener('keydown', e => {
 export function getInputDirection() {
     lastInputDirection = inputDirection
     return inputDirection
+}
+
+function noscroll() {
+    window.scrollTo(0, 0);
 }
